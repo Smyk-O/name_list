@@ -1,0 +1,19 @@
+.tableColLeft, .tableColRight {
+    width: 5%;
+}
+
+.tableCol {
+    width: 45%;
+}
+
+.btn_size  {
+    padding: 2px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+}
+
+.material-icons {
+    justify-content: center;
+    align-items: center;
+}
