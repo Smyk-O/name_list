@@ -1,47 +1,75 @@
-// Код для понимания:
-// $("#btnAdd").click(function(){
-//     x = ($("#name").val());
-//     var fname = ($("#fName").val());
-//     alert("Имя: " + x + " Фамилия: " + fname);
-//   });
-
 $(document).ready(function () {
-  var x = 1;
-  var validName = false;
-  var validFname = false;
 
-  $(".input-group").click(function (event) {
-    var name = $("#name").val();
-    var fName = $("#fName").val();
-    console.log(name)
-    if (name == "") {
+  var list_item = [];
 
-    } else {
-      validName = true;
-    }
-    if (fName == "") {
-
-    } else {
-      validFname = true;
-    }
-
-    if (validName == true && validFname == true) {
-      $("#btnAdd").click(function () {
-        $("#tbodyPlus").append(
-          "<tr> <td id='number'>" + x + "</td> <td>" + $("#name").val() + "</td> <td>" + $("#fName").val() + "</td> <td> <button class='btn btn-secondary btn_size btnDel' type='button'><i class='material-icons'>clear</i></button></td></tr>"
-        );
-        $(".textAdd").val("");
-        x++;
-        throw new Error();
-      });
-    } else {
-      throw new Error();
-    }
-    $(".btnDel").click(function () {
-      $(this).closest('tr').remove();
-      x--;
-      throw new Error();
-    });
-    return
+  $("#btnAdd").popover({
+    trigger: "focus"
   });
+
+  $(document).keypress(function (e) {
+    if (e.which == 13) {
+      volid();
+    }
+  });
+  
+  $("#btnAdd").click(function (event) {
+    volid();
+  });
+
+  $('body').click(function (event) {
+    var target = event.target;
+    if (target && target.matches('.btnDel')) {
+
+      if (typeof target.dataset.index !== 'undefined') {
+        deleteFromModel(target.dataset.index);
+      }
+    }
+  });
+
+  function volid(event) {
+    var name = $("#name").val();
+    var lastname = $("#fName").val();
+
+    if (!name || !lastname) {
+      return true;
+    }
+
+    addtolist_item(name, lastname)
+  }
+
+  function deleteFromModel(indexForDelete) {
+    list_item.splice(indexForDelete, 1);
+    updateView();
+  }
+
+  function addtolist_item(name, lastname) {
+    list_item.push({
+      name: name,
+      lastname: lastname
+    });
+    console.log(list_item)
+    updateView();
+  };
+
+  function updateView() {
+
+    var tb_plus = [];
+
+    list_item.forEach(function (item, index) {
+      var actualIndex = index + 1;
+
+      tb_str = "<tr>";
+      tb_str += "<td>" + actualIndex + "</td>";
+      tb_str += "<td>" + item.name + "</td>";
+      tb_str += "<td>" + item.lastname + "</td>";
+      tb_str += "<td> <button class='btn btn-danger btn-sm btnDel' type='button' data-index='" + index + "'>";
+      tb_str += "<i class='material-icons'>clear</i></button></td>";
+      tb_str += "</tr>";
+      tb_plus.push(
+        tb_str
+      )
+    });
+    $("#tbodyPlus").html(tb_plus);
+    $(".textAdd").val("");
+  };
 });
