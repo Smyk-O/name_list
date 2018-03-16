@@ -13,22 +13,30 @@
 </head>
 
 <body>
-    <div class="p-3 bg-info text-white container my-3">
-        <h1>Список</h1>
+    <div class="jumbotron bg-info m-3">
         <div class="input-group">
-            <input type="text" class="form-control textAdd" id="name" placeholder="Имя">
-            <input type="text" class="form-control textAdd" id="fName" placeholder="Фамилия">
-            <button class="btn btn-secondary" type="button" id="btnAdd" data-toggle="popover" data-placement="top" data-content="Введите все данные">Добавить</button>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Имя и фамилия:</span>
+            </div>
+            <input type="text" class="form-control textAdd" id="name" />
+            <input type="text" class="form-control textAdd" id="lname" />
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text">Тел. номер:</span>
+            </div>
+            <input type="text" class="form-control textAdd" id="phone" name="phone" placeholder="Введите ваш телефон" data-content="">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="button" id="btnAdd">Добавить</button>
+            </div>
         </div>
     </div>
-
-    <div class="p-3 bg-info container">
+    <div class="jumbotron bg-info m-3">
         <table class="table table-striped table-bordered table-secondary">
             <thead class="table-dark">
                 <tr>
                     <th scope="col" class="tableColLeft">#</th>
                     <th scope="col" class="tableCol">Имя</th>
                     <th scope="col" class="tableCol">Фамилия</th>
+                    <th scope="col" class="tableCol">Тел. номер</th>
                     <th scope="col" class="tableColRight"></th>
                 </tr>
             </thead>
@@ -36,10 +44,10 @@
             </tbody>
         </table>
     </div>
-
-
-    <script src="https://unpkg.com/popper.js"></script>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
     <script src=https://yastatic.net/jquery/3.1.1/jquery.min.js></script>
+    <script src="jquery.maskedinput.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>

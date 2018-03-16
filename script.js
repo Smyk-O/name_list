@@ -1,40 +1,50 @@
 $(document).ready(function () {
 
+  $(function ($) {
+    $("#phone").mask("+7(999) 999-9999");
+  });
+
   var list_item = [];
 
   $("#btnAdd").popover({
-    trigger: "focus"
+    content: 'Введите все данные',
+    placement: 'top',
+    trigger: 'manual'
   });
 
-  $(document).keypress(function (e) {
-    if (e.which == 13) {
-      volid();
+  $(".textAdd").keypress(function (e) {
+    if (e.which === 13) {
+      valid();
     }
   });
-  
+
   $("#btnAdd").click(function (event) {
-    volid();
+    valid();
   });
 
   $('body').click(function (event) {
     var target = event.target;
-    if (target && target.matches('.btnDel')) {
+    if (target.matches('.btnDel')) {
 
-      if (typeof target.dataset.index !== 'undefined') {
-        deleteFromModel(target.dataset.index);
-      }
+      deleteFromModel(target.dataset.index);
     }
   });
 
-  function volid(event) {
+  function valid(event) {
     var name = $("#name").val();
-    var lastname = $("#fName").val();
+    var lastname = $("#lname").val();
+    var phone = $("#phone").val();
 
-    if (!name || !lastname) {
+
+    if (!name || !lastname || !phone) {
+      $("#btnAdd").popover("show");
+      setTimeout(function () {
+        $("#btnAdd").popover('hide');
+      }, 2000)
       return true;
     }
 
-    addtolist_item(name, lastname)
+    addtolist_item(name, lastname, phone)
   }
 
   function deleteFromModel(indexForDelete) {
@@ -42,12 +52,12 @@ $(document).ready(function () {
     updateView();
   }
 
-  function addtolist_item(name, lastname) {
+  function addtolist_item(name, lastname, phone) {
     list_item.push({
       name: name,
-      lastname: lastname
+      lastname: lastname,
+      phone: phone
     });
-    console.log(list_item)
     updateView();
   };
 
@@ -58,10 +68,11 @@ $(document).ready(function () {
     list_item.forEach(function (item, index) {
       var actualIndex = index + 1;
 
-      tb_str = "<tr>";
+      var tb_str = "<tr>";
       tb_str += "<td>" + actualIndex + "</td>";
       tb_str += "<td>" + item.name + "</td>";
       tb_str += "<td>" + item.lastname + "</td>";
+      tb_str += "<td>" + item.phone + "</td>";
       tb_str += "<td> <button class='btn btn-danger btn-sm btnDel' type='button' data-index='" + index + "'>";
       tb_str += "<i class='material-icons'>clear</i></button></td>";
       tb_str += "</tr>";

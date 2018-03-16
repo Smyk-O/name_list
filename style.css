@@ -1,9 +1,10 @@
 .tableColLeft, .tableColRight {
-    width: 5%;
+    min-width: 55px;
+    max-width: 55px;
 }
 
 .tableCol {
-    width: 45%;
+    width: 35%;
 }
 
 .btnDel  {
@@ -13,4 +14,14 @@
 
 .btnDel .material-icons {
     pointer-events: none;
+}
+
+/* Удаление стрелок у inputa [type="number"] */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
