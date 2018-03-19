@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
+
     <div class="jumbotron bg-info m-3">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -23,20 +23,21 @@
             <div class="input-group-prepend input-group-append">
                 <span class="input-group-text">Тел. номер:</span>
             </div>
-            <input type="text" class="form-control textAdd" id="phone" name="phone" placeholder="Введите ваш телефон" data-content="">
+            <input type="text" class="form-control textAdd" id="phone" name="phone" placeholder="+7(___) ___-____" data-content="">
             <div class="input-group-append">
                 <button class="btn btn-secondary" type="button" id="btnAdd">Добавить</button>
             </div>
         </div>
     </div>
+
     <div class="jumbotron bg-info m-3">
         <table class="table table-striped table-bordered table-secondary">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col" class="tableColLeft">#</th>
-                    <th scope="col" class="tableCol">Имя</th>
-                    <th scope="col" class="tableCol">Фамилия</th>
-                    <th scope="col" class="tableCol">Тел. номер</th>
+                    <th scope="col" class="tableColLeft" >#</th>
+                    <th scope="col" class="tableCol" id="btnSortName">Имя</th>
+                    <th scope="col" class="tableCol" id="btnSortLname">Фамилия</th>
+                    <th scope="col" class="tableCol" id="btnSortPhone">Тел. номер</th>
                     <th scope="col" class="tableColRight"></th>
                 </tr>
             </thead>
@@ -44,13 +45,13 @@
             </tbody>
         </table>
     </div>
- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
-    <script src=https://yastatic.net/jquery/3.1.1/jquery.min.js></script>
-    <script src="jquery.maskedinput.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/popper.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    
 </body>
 
 </html>

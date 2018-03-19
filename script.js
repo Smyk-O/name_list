@@ -1,10 +1,15 @@
 $(document).ready(function () {
 
+  var list_item = [];
+
+  $(function ($) {
+    list_item = localStorage.save_list_data ? JSON.parse(localStorage.save_list_data) : [];
+    updateView();
+  });
+
   $(function ($) {
     $("#phone").mask("+7(999) 999-9999");
   });
-
-  var list_item = [];
 
   $("#btnAdd").popover({
     content: 'Введите все данные',
@@ -28,6 +33,22 @@ $(document).ready(function () {
 
       deleteFromModel(target.dataset.index);
     }
+
+  });
+
+  $("#btnSortName").click(function (event) {
+    list_item.sort(compareName);
+    updateView();
+  });
+
+  $("#btnSortLname").click(function (event) {
+    list_item.sort(compareLname);
+    updateView();
+  });
+
+  $("#btnSortPhone").click(function (event) {
+    list_item.sort(comparePhone);
+    updateView();
   });
 
   function valid(event) {
@@ -40,7 +61,7 @@ $(document).ready(function () {
       $("#btnAdd").popover("show");
       setTimeout(function () {
         $("#btnAdd").popover('hide');
-      }, 2000)
+      }, 2000);
       return true;
     }
 
@@ -80,7 +101,24 @@ $(document).ready(function () {
         tb_str
       )
     });
+    save_list(list_item)
     $("#tbodyPlus").html(tb_plus);
     $(".textAdd").val("");
   };
 });
+
+function save_list(save_list_data) {
+  localStorage.save_list_data = JSON.stringify(save_list_data);
+};
+
+function compareName(nameA, nameB) {
+  return nameA.name > nameB.name;
+};
+
+function compareLname(lnameA, lnameB) {
+  return lnameA.lastname > lnameB.lastname;
+};
+
+function comparePhone(phoneA, phoneB) {
+  return phoneA.phone > phoneB.phone;
+};
