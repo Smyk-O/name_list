@@ -4,7 +4,7 @@ $(document).ready(function () {
   var $btnAdd = $("#btnAdd");
 
   if (localStorage.save_list_data) {
-    list_item = JSON.parse(localStorage.save_list_data);
+    load_list()
     updateView();
   }
 
@@ -102,13 +102,13 @@ $(document).ready(function () {
   }
 
   function addtolist_item(name, lastname, phone) {
-    var data = times()
     list_item.push({
       name: name,
       lastname: lastname,
       phone: phone,
-      addata: data
+      addata: time()
     });
+    save_list(list_item);
     updateView();
   }
 
@@ -130,24 +130,60 @@ $(document).ready(function () {
         tb_str
       )
     });
-    save_list(list_item)
+
     $("#tbodyPlus").html(tb_plus);
     $(".textAdd").val("");
   }
 
 
-  function save_list(save_list_data) {
-    localStorage.save_list_data = JSON.stringify(save_list_data);
+  function save_list(save_list) {
+    localStorage.save_list_data = JSON.stringify(save_list);
   }
 
-  function times() {
-    var data = new Date();
-    var tame = data.getDate() + ".";
-    tame += data.getMonth() + ".";
-    tame += data.getFullYear() + "г.";
-    tame += data.getHours() + ":";
-    tame += data.getMinutes() + ":";
-    tame += data.getSeconds();
-    return tame;
+  function time() {
+    var date = new Date();
+    var time = date.getDate() + "." + date.getMonth() + ".";
+    time += date.getFullYear() + "г." + date.getHours() + ":";
+    time += date.getMinutes() + ":" + date.getSeconds();
+    return time;
   }
+
+  $("#search").keyup(function (e) {
+
+    var $this = $(this);
+    var query = $this.val();
+    load_list()
+
+    list_item = list_item.filter(function (item) {
+      var str = item.name + "°" + item.lastname + "°" + item.phone;
+      if (str.toLowerCase().includes(query)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    updateView();
+
+    // я пытался но работает не коректно:(
+    // var _this = this;
+    // console.log($(_this).val())
+    // if ($(_this).val() === "") {
+    //   list_item = JSON.parse(localStorage.save_list_data);
+    //   updateView();
+    // } else {
+    //   list_item.forEach(function (item, index) {
+    //     var str = item.name + "|" + item.lastname + "|" + item.phone;
+    //     if (str.toLowerCase().indexOf($(_this).val().toLowerCase()) !== -1) {
+    //     } else {
+    //       deleteFromModel(index);
+    //     }
+    //   });
+    // }
+  });
+
+  function load_list() {
+    list_item = JSON.parse(localStorage.save_list_data);
+  }
+
 });
+
