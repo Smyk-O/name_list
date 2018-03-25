@@ -26,19 +26,21 @@ $(document).ready(function () {
   $btnAdd.click(function (event) {
     valid();
   });
-
-  $('body').click(function (event) {
+  // не лучше ли искать в рамках хотябы таблицы? заместо body
+  $(".table").click(function (event) {
     var target = event.target;
     if (target.matches('.btnDel')) {
-
-      deleteFromModel(target.dataset.index);
+      var $delN = $(".del" + target.dataset.index);
+      // применел до того как нашол метод toggle
+      // $($delN).slideUp(500);
+      $($delN).slideToggle(500);
+      setTimeout(function () { deleteFromModel(target.dataset.index) }, 500);
     }
-
   });
 
   $("#btnSortName").click(function () {
     compare($(this), 'name');
-  });
+  });23
 
   $("#btnSortLname").click(function () {
     compare($(this), 'lastname');
@@ -98,6 +100,7 @@ $(document).ready(function () {
 
   function deleteFromModel(indexForDelete) {
     list_item.splice(indexForDelete, 1);
+    save_list(list_item);
     updateView();
   }
 
@@ -119,11 +122,11 @@ $(document).ready(function () {
     list_item.forEach(function (item, index) {
       var actualIndex = index + 1;
       var tb_str = "<tr>";
-      tb_str += "<td>" + actualIndex + "</td>";
-      tb_str += "<td>" + item.name + "</td>";
-      tb_str += "<td>" + item.lastname + "</td>";
-      tb_str += "<td>" + item.phone + "</td>";
-      tb_str += "<td> <button class='btn btn-danger btn-sm btnDel' type='button' data-index='" + index + "'>";
+      tb_str += "<td  class='del" + index + "'>" + actualIndex + "</td>";
+      tb_str += "<td  class='del" + index + "'>" + item.name + "</td>";
+      tb_str += "<td  class='del" + index + "'>" + item.lastname + "</td>";
+      tb_str += "<td  class='del" + index + "'>" + item.phone + "</td>";
+      tb_str += "<td  class='del" + index + "'><button class='btn btn-danger btn-sm btnDel' type='button' data-index='" + index + "'>";
       tb_str += "<i class='material-icons'>clear</i></button></td>";
       tb_str += "</tr>";
       tb_plus.push(
@@ -132,6 +135,9 @@ $(document).ready(function () {
     });
 
     $("#tbodyPlus").html(tb_plus);
+    // применел до того как нашол метод toggle
+    // также делал через div пропысаный внутрь td - из всех метадов этот лучше всего работал но решил пробовать через toqqle
+    // $('tbody td') .slideDown(0);
     $(".textAdd").val("");
   }
 
