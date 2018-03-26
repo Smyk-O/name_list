@@ -40,7 +40,7 @@ $(document).ready(function () {
 
   $("#btnSortName").click(function () {
     compare($(this), 'name');
-  });23
+  });
 
   $("#btnSortLname").click(function () {
     compare($(this), 'lastname');
@@ -122,12 +122,12 @@ $(document).ready(function () {
     list_item.forEach(function (item, index) {
       var actualIndex = index + 1;
       var tb_str = "<tr>";
-      tb_str += "<td  class='del" + index + "'>" + actualIndex + "</td>";
-      tb_str += "<td  class='del" + index + "'>" + item.name + "</td>";
-      tb_str += "<td  class='del" + index + "'>" + item.lastname + "</td>";
-      tb_str += "<td  class='del" + index + "'>" + item.phone + "</td>";
-      tb_str += "<td  class='del" + index + "'><button class='btn btn-danger btn-sm btnDel' type='button' data-index='" + index + "'>";
-      tb_str += "<i class='material-icons'>clear</i></button></td>";
+      tb_str += "<td class='pt-1 pb-1'><div class='del" + index + "'>" + actualIndex + "</div></td>";
+      tb_str += "<td class='pt-1 pb-1'><div class='del" + index + "'>" + item.name + "</div></td>";
+      tb_str += "<td class='pt-1 pb-1'><div class='del" + index + "'>" + item.lastname + "</div></td>";
+      tb_str += "<td class='pt-1 pb-1'><div class='del" + index + "'>" + item.phone + "</div></td>";
+      tb_str += "<td class='pt-1 pb-1'><div class='del" + index + "'><button class='btn btn-danger btn-sm btnDel' type='button' data-index='" + index + "'>";
+      tb_str += "<i class='material-icons'>clear</i></button></div></td>";
       tb_str += "</tr>";
       tb_plus.push(
         tb_str
@@ -137,7 +137,7 @@ $(document).ready(function () {
     $("#tbodyPlus").html(tb_plus);
     // применел до того как нашол метод toggle
     // также делал через div пропысаный внутрь td - из всех метадов этот лучше всего работал но решил пробовать через toqqle
-    // $('tbody td') .slideDown(0);
+    $('tbody tr').slideToggle(0);
     $(".textAdd").val("");
   }
 

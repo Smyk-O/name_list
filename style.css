@@ -25,7 +25,8 @@
     position:relative;
 }
 
-tbody td {
+/* применел до того как нашол метод Toggle */
+tbody tr {
     display: none;
 }
 
@@ -96,3 +97,11 @@ body, html{
     height: 100%;
 }
 /* ---------- */
+
+/* для таблицы через Див */
+
+.table-str {
+    display: flex;
+    color: #fff;
+    border-bottom: 2px solid #dee2e6;
+}
