@@ -1,3 +1,16 @@
+/* решение для фона */
+body,
+html{
+    height:100%;
+}
+
+.colorbg {
+    background: linear-gradient(180deg, #adadad 50%, #fff 100%);
+    height: 100%;
+}
+/* ---------- */
+
+/* Логотип */
 .header {
     display: flex;
     align-items: center;
@@ -6,16 +19,18 @@
 }
 
 .logo {
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
 }
 
 .h1 {
     margin-left: 10px;
     text-shadow: 0 6px 10px #00000040, 0 3px 5px #00000040;
 }
+/* ---------- */
 
-.tableColLeft, .tableColRight {
+
+.tableColSide {
     min-width: 55px;
     max-width: 55px;
 }
@@ -23,11 +38,6 @@
 .tableCol {
     width: 35%;
     position:relative;
-}
-
-/* применел до того как нашол метод Toggle */
-tbody tr {
-    display: none;
 }
 
 .btnDel  {
@@ -45,13 +55,23 @@ tbody tr {
     cursor: pointer;
 }
 
-.asc::after, .desc::after {
+.asc::after,
+.desc::after {
     display: inline-flex;
     position: absolute;
     right: 15px;
     height:18px;
     width: 18px;
     content: "";
+}
+
+#tbodyPlus td {
+    padding: 0;
+    vertical-align: middle;
+}
+
+#tbodyPlus td div {
+    margin: 7px 12px;
 }
 
 .asc::after {
@@ -62,7 +82,9 @@ tbody tr {
     background-image: url("data:image/svg+xml,%3Csvg fill='%23FFFFFF' height='18' viewBox='0 0 18 18' width='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
 }
 
-.personico::before, .phoneico::before, .searchico::before {
+.personico::before,
+.phoneico::before,
+.searchico::before {
     display: inline-flex;
     margin-right: 5px;
     height:22px;
@@ -85,23 +107,4 @@ tbody tr {
 
 .shadow {
     box-shadow: 0 12px 24px #00000040, 0 10px 10px #00000040;
-}
-
-/* решение для фона */
-body, html{
-    height:100%;
-}
-
-.colorbg {
-    background: linear-gradient(180deg, #adadad 50%, #fff 100%);
-    height: 100%;
-}
-/* ---------- */
-
-/* для таблицы через Див */
-
-.table-str {
-    display: flex;
-    color: #fff;
-    border-bottom: 2px solid #dee2e6;
 }

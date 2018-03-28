@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -50,31 +50,16 @@
             <table class="table table-striped table-bordered table-secondary shadow">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col" class="tableColLeft">#</th>
-                        <!-- <th scope="col" class="tableCol" id="btnSortName">Имя</th> -->
-                        <!-- <th scope="col" class="tableCol" id="btnSortLname">Фамилия</th> -->
-                        <!-- <th scope="col" class="tableCol" id="btnSortPhone">Тел. номер</th> -->
-                        <th scope="col" class="tableColRight"></th>
+                        <th scope="col" class="tableColSide">#</th>
+                        <th scope="col" class="tableCol" id="btnSortName">Имя</th>
+                        <th scope="col" class="tableCol" id="btnSortLname">Фамилия</th>
+                        <th scope="col" class="tableCol" id="btnSortPhone">Тел. номер</th>
+                        <th scope="col" class="tableColSide"></th>
                     </tr>
                 </thead>
                 <tbody id="tbodyPlus">
                 </tbody>
             </table>
-        </div>
-        <!-- ТАБЛИЦА ЧЕРЕЗ ДИВЫ -->
-        <div class="container p-2">
-            <!-- ШАПКА ТАБЛИЦЫ ЧЕРЕЗ ДИВЫ -->
-            <div class="table-str shadow bg-dark font-weight-bold">
-                <div class="tableColLeft p-2 border border-secondary">#</div>
-                <div class="tableCol p-2 border border-secondary" id="btnSortName">Имя</div>
-                <div class="tableCol p-2 border border-secondary" id="btnSortLname">Фамилия</div>
-                <div class="tableCol p-2 border border-secondary" id="btnSortPhone">Тел. номер</div>
-                <div class="tableColRight p-2 border border-secondary"></div>
-            </div>
-            <!-- ТЕЛО ТАБЛИЦЫ ЧЕРЕЗ ДИВЫ -->
-            <div>
-
-            </div>
         </div>
     </div>
 
@@ -82,7 +67,8 @@
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/jquery.maskedinput/src/jquery.maskedinput.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script/PhoneList.js"></script>
+    <script src="script/script.js"></script>
 </body>
 
 </html>
