@@ -1,3 +1,10 @@
+// import $ from 'jquery';
+// import 'bootstrap';
+// import 'popper.js';
+// import 'jquery.maskedinput/src/jquery.maskedinput.js';
+
+// import PhoneList from './PhoneList';
+
 class App {
     constructor() {
         this.plist = new PhoneList(this.updateView);
@@ -129,5 +136,6 @@ class App {
         $(".textAdd").val("");
     }
 }
-
+$(document).ready( function(){
 var programm = new App();
+});
