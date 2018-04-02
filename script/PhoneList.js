@@ -1,5 +1,3 @@
-// export default PhoneList
-
 class PhoneList {
   constructor(callback) {
     this._list = [];
@@ -91,3 +89,5 @@ class PhoneList {
     this._updateView(this._list);
   }
 }
+
+export default PhoneList

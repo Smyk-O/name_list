@@ -1,9 +1,9 @@
-// import $ from 'jquery';
-// import 'bootstrap';
-// import 'popper.js';
-// import 'jquery.maskedinput/src/jquery.maskedinput.js';
+import $ from 'jquery';
+import 'bootstrap';
+import 'popper.js';
+import 'jquery.maskedinput/src/jquery.maskedinput.js';
 
-// import PhoneList from './PhoneList';
+import PhoneList from './PhoneList';
 
 class App {
     constructor() {
@@ -18,7 +18,6 @@ class App {
      */
     initPlugins() {
         $("#phone").mask("+7 (999) 999-9999");
-
         this.$btnAdd.popover({
             content: 'Введите все данные',
             placement: 'top',
