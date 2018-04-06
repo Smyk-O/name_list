@@ -45,15 +45,15 @@ class App {
 
         // Сортировка сиска
         $("#btnSortName").click(function () {
-            self.search($(this), 'name');
+            self.compare($(this), 'name');
         });
 
         $("#btnSortLname").click(function () {
-            self.search($(this), 'lastname');
+            self.compare($(this), 'lastname');
         });
 
         $("#btnSortPhone").click(function () {
-            self.search($(this), 'phone');
+            self.compare($(this), 'phone');
         });
 
         // Удаление элемента списка
@@ -77,13 +77,13 @@ class App {
     compare($this, keyName) {
         this.cleanClass($this);
         if (!$this.hasClass("asc")) {
+            this.plist.sorting(true, keyName);
             $this.removeClass("desc")
                 .addClass("asc");
-                self.plist.sorting(true, keyName);
         } else {
+            this.plist.sorting(false, keyName);
             $this.removeClass("asc")
                 .addClass("desc");
-                self.plist.sorting(false, keyName);
         }
     }
     cleanClass($this) {
@@ -135,6 +135,6 @@ class App {
         $(".textAdd").val("");
     }
 }
-$(document).ready( function(){
-var programm = new App();
+$(document).ready(function () {
+    var programm = new App();
 });

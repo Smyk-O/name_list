@@ -58,6 +58,22 @@ class PhoneList {
   }
 
   /**
+    * Сортировка сиска
+    */
+  sorting(x, keyName) {
+    if (x) {
+      this._list.sort(function (a, b) {
+        return a[keyName] > b[keyName];
+      });
+    } else {
+      this._list.sort(function (a, b) {
+        return a[keyName] < b[keyName];
+      });
+    }
+    this._updateView(this._list);
+  }
+
+  /**
    * Поиск по списку 
    */
   search(query) {
@@ -71,22 +87,6 @@ class PhoneList {
       }
     });
     this._updateView(this._list)
-  }
-
-  /**
-   * Сортировка сиска
-   */
-  sorting(bool, keyName) {
-    if (bool) {
-      this._list.sort(function (a, b) {
-        return a[keyName] > b[keyName];
-      });
-    } else {
-      this._list.sort(function (a, b) {
-        return a[keyName] < b[keyName];
-      });
-    }
-    this._updateView(this._list);
   }
 }
 
